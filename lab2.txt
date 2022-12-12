@@ -1,0 +1,65 @@
+#include<iostream>
+#include<ctime>
+usingnamespacestd;
+
+int main(void)
+{
+setlocale(0, "");
+srand(time(NULL));
+
+int n=1000, m = n;
+
+int** A = newint* [n];
+for (inti = 0; i< n; i++)
+    {
+        A[i] = newint[m];
+    }
+
+int** B = newint* [n];
+for (inti = 0; i< n; i++)
+    {
+        B[i] = newint[m];
+    }
+
+int** C = newint* [n];
+for (inti = 0; i< n; i++)
+    {
+        C[i] = newint[m];
+    }
+
+for (autoi = 0; i< n; i++)
+for (auto j = 0; j < n; j++)
+            A[i][j]=10+rand()%90;
+
+for (autoi = 0; i< n; i++)
+for (auto j = 0; j < n; j++)
+            B[i][j] = 10 + rand() % 90;
+
+double time1 = clock();
+for (autoi = 0; i< n; i++) {
+for (auto j = 0; j < n; j++) {
+            C[i][j] = 0;
+for (auto k = 0; k < n; k++)
+                C[i][j] += A[i][k] * B[k][j];
+        }
+    }
+double time2 = clock();
+
+cout<<"¬рем€умножени€: "<< (time2 - time1) / 1000.0 <<endl;
+cout<<endl<<"¬рем€ выполнение програмы: "<<clock() / 1000.0;
+cin.get();
+
+for (inti = 0; i< n; i++)
+delete[] A[i];
+delete[] A;
+
+for (inti = 0; i< n; i++)
+delete[] B[i];
+delete[] B;
+
+for (inti = 0; i< n; i++)
+delete[] C[i];
+delete[] C;
+
+return 0;
+}
